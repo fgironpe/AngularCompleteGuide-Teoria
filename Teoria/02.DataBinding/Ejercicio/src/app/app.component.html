@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <h1>Assignment 2: Databinding</h1>
+  </div>
+  <!-- Mi solución -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          class="form-control"
+          id="username"
+          [(ngModel)]="username">
+        </div>
+        <div class="form-group">
+          <button 
+            class="btn btn-primary mt-2"
+            (click)="onResetUsername()"
+            [disabled]="!username">
+            Reset username
+          </button>
+      </div>
+      <div class="form-group">
+        <h3>Username:</h3>
+        <p>{{username}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Solución Maximilian -->
+  <div class="row mt-4">
+    <h3>Maximilian Solution</h3>
+    <div class="xs-12">
+      <label>Username</label>
+      <input type="text" class="form-control" [(ngModel)]="usernameMax">
+      <button 
+        class="btn btn-primary" 
+        [disabled]="usernameMax === ''"
+        (click)="usernameMax=''">Reset User</button>
+      <p>{{usernameMax}}</p>
+    </div>
+  </div>
+</div>
+
+
