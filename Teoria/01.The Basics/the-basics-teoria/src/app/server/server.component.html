@@ -1,0 +1,6 @@
+<!-- String interpolation: También podemos harcodear una cadena de texto o cualquier expresión que devuelva una caddena (métodos, etc). NO se pueden escribir expresiones mulltilínea-->
+<!-- ngStyle: Directiva que permite cambiar el estilo a un elemento: Es un objeto de clave (clase de css) - valor(valor de la clase de css),  -->
+<!-- ngClass: Directiva que permite cambiar la clase css a un elemento: Objeto clave (clase a la que se va a cambiar) - valor(condición que se tiene que cumplir para que cambie) -->
+<p 
+    [ngStyle]="{backgroundColor: getColor()}"
+    [ngClass]="{online: serverStatus === 'online'}">{{ 'server' }} with ID {{ serverId }} is {{ getServerStatus() }}</p>
