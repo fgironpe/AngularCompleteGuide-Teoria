@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12">
+      <p>Add new Servers or blueprints!</p>
+      <label>Server Name</label>
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> -->
+      <!-- 
+        #serverNameInput: Es una referencia local a un elemento del DOM (al input en este caso), 
+        con la que podríamos acceder a todas las propiedades del objeto referenciado tanto en el template 
+        (serverNameInput.value por ejemplo), como en el fichero de typescript  
+      -->
+      <input 
+        type="text" 
+        class="form-control" 
+        #serverNameInput>
+      <label>Server Content</label>
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+      <input 
+        type="text" 
+        class="form-control" 
+        #serverContentInput>
+      <br>
+      <button
+        class="btn btn-primary"
+        (click)="onAddServer(serverNameInput)">Add Server</button>
+      <button
+        class="btn btn-primary"
+        (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
+    </div>
+</div>

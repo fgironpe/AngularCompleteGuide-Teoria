@@ -1,0 +1,36 @@
+<div class="container">
+  <!-- 
+    (onServerCreated) => Escucha al evento onServerCreated y cuando sucede ejecuta el método onServerAdded. El parámetro $event recoge los datos
+    que se envían desde el evento onServerCreated que se ejecuta desde el componente cockpitComponent
+  -->
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (bpCreated)="onBlueprintAdded($event)">
+  </app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- [element] => Property Binding para pasar la información de un componente a otro.
+            Asigna la propiedad element de appComponent a la propiedad serverElement del componente serverElement      
+      -->
+      <!-- [name] => Prueba de ngOnChanges, es la propiedad que tiene el decorador @Input en server-element -->
+      <button class="btn btn-primary" (click)="onChangesFirst()">Change First Element</button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy First Component</button>
+      <app-server-element 
+        *ngFor="let serverElement of serverElements"
+        [srvElement]="serverElement"
+        [name]="serverElement.name">
+        <!-- 
+          Generamos el código HTML que queremos que se muestre en el componente, pero tenemos que. Todo este contenido es proyectado hacia
+          el componente destino (server-element en este caso).
+          Esto sirve para hacer componentes más reusables, como por ejemplo, cards o pestañas, donde el contenido de éstas vienen desde otra fuente
+          y a la que no es recomendable pasar los datos a traves de property binding.
+         -->
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+      </app-server-element>
+    </div>
+  </div>
+</div>

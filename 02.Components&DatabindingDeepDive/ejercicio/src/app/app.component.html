@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2><strong>Assignment 4</strong> </h2>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <ol>
+        <li>Create three new components: GameControl, Odd and Even</li>
+        <li>The GameControl shuld have buttons to start and stop the game.</li>
+        <li>When starting the game, an event (holding an incrementing number) should get emitted each second (ref=setInterval())</li>
+        <li>The event should be listenable from outside the component</li>
+        <li>When stopping the game, no more events shoud get emitted (clearInterval(ref))</li>
+        <li>A new Odd component shoud get created for every odd number emitted, the same should happen for the Even Component (on even numbers)</li>
+        <li>Simply output Odd - NUMBER or Even - NUMBER in the two components</li>
+        <li>Style the element (e.g paragraph) holding your output text differently in both components</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <app-game-control (numberIncrement)="onDivideNumbers($event)"></app-game-control>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <app-odd 
+        *ngFor="let odd of oddList"
+        [oddNumber]="odd">
+      </app-odd>
+    </div> 
+    <div class="col-md-6">
+      <div class="col-md-12" *ngFor="let even of evenList">
+        <p class="evenParagraph" #evenNumber>{{ even }}</p>
+      </div>
+    </div>
+  </div>
+</div>

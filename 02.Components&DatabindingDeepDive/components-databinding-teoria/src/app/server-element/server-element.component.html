@@ -1,0 +1,17 @@
+<div
+    class="panel panel-default">
+    <!-- <div class="panel-heading">{{ element.name }}</div> -->
+    <!-- Prueba de ngOnChanges, name es la propiedad con @Input  -->
+    <div class="panel-heading" #heading>{{ name }}</div>
+    <div class="panel-body">
+        <!-- <p>
+        <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+        <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+        </p> -->
+        <!-- 
+            A veces, cuando tienes código HTML complejo que quieres pasar a un componente desde fuera, puedes crear el código HTML denrto de las
+            etiquetas en las que se referencia a este componente (en este caso en appComponent.html <app-server-element>)
+         -->
+         <ng-content></ng-content>
+    </div>
+</div>
