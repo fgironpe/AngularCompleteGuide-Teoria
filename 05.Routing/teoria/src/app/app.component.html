@@ -1,26 +1,39 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Servers</a></li>
-        <li role="presentation"><a href="#">Users</a></li>
-      </ul>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <ul class="nav nav-tabs">
+                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="/">Home</a>
+                </li>
+                <li role="presentation" routerLinkActive="active">
+                    <a routerLink="/servers">Servers</a>
+                </li>
+                <li role="presentation" routerLinkActive="active">
+                    <a [routerLink]="['/users']">Users</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <app-home></app-home>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <!-- Carga las páginas de las rutas que le indica la app -->
+            <router-outlet></router-outlet>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <app-users></app-users>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <app-servers></app-servers>
-    </div>
-  </div>
 </div>
+<!-- 
+  routerLink = Se le pasa un string por parámetro (la ruta a la que se dirigirá la app). Angular leerá la ruta y la tratará como un enlace.
+    Cuando se hace click en el enlace, routerLink detecta el evento y evita que se envíe una nueva solicitud. Comprueba la cadena, revisa si se encuentra 
+    en el array de rutas definido en el appModule (appRoutes) y si la encuentra carga esa página (sin recargar de nuevo la aplicación, sin perder el estado 
+    y mejorando la velicidad en la que carga)
+
+    routerLink="ruta" = Establece una ruta relativa al enlace desde la raíz de la aplicación (si estamos dentro de appComponent) (http://localhost:4200/)
+    routerLink="/ruta" = Establece una ruta absoluta al enlace (http://localhost:4200/servers)
+
+    Por ejemplo: Si estamos dentro del componente servers:
+      Si establecemos el siguiente enlace: routerLink="servers" => fallará porque intenta establecer una ruta relativa desde el componente en el que nos 
+      encontramos, por lo qu estaría intentando cargar la ruta servers/servers
+      Para que funcione, habría que retroceder un nivel para que cargue la ruta relativa: ../servers o poner la ruta absoluta dentro del routerLink (/servers)
+  
+  [routerLink] = Property binding con RouterLink: Se le pasa un array como parámetro ['/users', 'algo'] En la primera posición del array le ponemos la ruta 
+ -->
