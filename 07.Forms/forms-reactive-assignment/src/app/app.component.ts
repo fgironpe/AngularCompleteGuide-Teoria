@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
     const forbiddenNames = ['Test']
     const promise = new Promise<any>((resolve, reject) => {
       setTimeout(() => {
-        console.log("found", control);
         if (forbiddenNames.indexOf(control.value) !== -1) {
           resolve({ 'projectNameIsForbidden': true });
         } else {
